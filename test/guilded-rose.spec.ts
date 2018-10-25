@@ -5,7 +5,8 @@ describe('Gilded Rose', function () {
   describe('goods quality', function () {
     const gildedRose = new GildedRose([
       new Item('Milk', 5, 10),
-      new Item('Milk', 0, 5)
+      new Item('Milk', 0, 5),
+      new Item('Milk', 0, 0),
     ]);
     const items = gildedRose.updateQuality();
     it('should degrade as they approach the sell date', function() {
@@ -13,6 +14,9 @@ describe('Gilded Rose', function () {
     });
     it('should degrade twice as fast once the sell by date has passed', function() {
       expect(items[1].quality).to.equal(3);
+    });
+    it('should be zero or higher', function() {
+      expect(items[2].quality).to.equal(0);
     });
   });
 });
