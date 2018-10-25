@@ -25,4 +25,17 @@ describe('Gilded Rose', function () {
       expect(items[4].quality).to.equal(48);
     });
   });
+  describe('Aged Brie quality', function () {
+    const gildedRose = new GildedRose([
+      new Item('Aged Brie', 5, 10),
+      new Item('Aged Brie', 0, 10),
+    ]);
+    const items = gildedRose.updateQuality();
+    it('should increase as they approach the sell date', function() {
+      expect(items[0].quality).to.equal(11);
+    });
+    it('should increase twice as fast once the sell by date has passed', function() {
+      expect(items[1].quality).to.equal(12);
+    });
+  });
 });
