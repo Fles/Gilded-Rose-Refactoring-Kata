@@ -38,4 +38,21 @@ describe('Gilded Rose', function () {
       expect(items[1].quality).to.equal(12);
     });
   });
+  describe('Sulfuras', function () {
+    const gildedRose = new GildedRose([
+      new Item('Sulfuras, Hand of Ragnaros', 5, 10),
+      new Item('Sulfuras, Hand of Ragnaros', 0, 10),
+    ]);
+    const items = gildedRose.updateQuality();
+    it('should not degrade sellIn value', function() {
+      expect(items[0].sellIn).to.equal(5);
+      expect(items[1].sellIn).to.equal(0);
+    });
+    it('should not degrade as it approach the sell date', function() {
+      expect(items[0].quality).to.equal(10);
+    });
+    it('should not degrade twice as fast once the sell by date has passed', function() {
+      expect(items[1].quality).to.equal(10);
+    });
+  });
 });
