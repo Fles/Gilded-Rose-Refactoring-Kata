@@ -55,4 +55,25 @@ describe('Gilded Rose', function () {
       expect(items[1].quality).to.equal(10);
     });
   });
+  describe('Backstage passes quality', function () {
+    const gildedRose = new GildedRose([
+      new Item('Backstage passes to a TAFKAL80ETC concert', 10, 10),
+      new Item('Backstage passes to a TAFKAL80ETC concert', 8, 10),
+      new Item('Backstage passes to a TAFKAL80ETC concert', 5, 10),
+      new Item('Backstage passes to a TAFKAL80ETC concert', 2, 10),
+      new Item('Backstage passes to a TAFKAL80ETC concert', 0, 10),
+    ]);
+    const items = gildedRose.updateQuality();
+    it('should increase by 2 once the sell by date is 10 or less', function() {
+      expect(items[0].quality).to.equal(12);
+      expect(items[1].quality).to.equal(12);
+    });
+    it('should increase by 3 once the sell by date is 5 or less', function() {
+      expect(items[2].quality).to.equal(13);
+      expect(items[3].quality).to.equal(13);
+    });
+    it('should be zero once the sell by date has passed', function() {
+      expect(items[4].quality).to.equal(0);
+    });
+  });
 });
