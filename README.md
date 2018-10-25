@@ -1,3 +1,10 @@
+# How to use
+
+1. Clone the code
+2. install dependencies by running `npm -i` from in root directory 
+3. run `npm run test` to see the test results in console
+4. open in browser `index.html` from `coverage` folder to see the html representation of the tests 
+
 # Gilded Rose Refactoring Kata
 
 This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
