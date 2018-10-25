@@ -80,4 +80,15 @@ describe('Gilded Rose', function () {
       expect(items[5].quality).to.equal(0);
     });
   });
+  describe('Conjured quality', function () {
+    const gildedRose = new GildedRose([
+      new Item('Conjured', 10, 10),
+      new Item('Conjured', 0, 10),
+    ]);
+    const items = gildedRose.updateQuality();
+    it('should degrade twice as fast as regular items', function () {
+      expect(items[0].quality).to.equal(8);
+      expect(items[1].quality).to.equal(6);
+    });
+  })
 });
