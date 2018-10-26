@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Item, GildedRose } from '../app/gilded-rose';
 
 describe('Gilded Rose', function () {
-  describe('goods quality', function () {
+  describe('Regular goods', function () {
     const gildedRose = new GildedRose([
       new Item('Milk', 5, 10),
       new Item('Milk', 0, 5),
@@ -11,30 +11,30 @@ describe('Gilded Rose', function () {
       new Item('Milk', 0, 60),
     ]);
     const items = gildedRose.updateQuality();
-    it('should degrade as they approach the sell date', function() {
+    it('should degrade quality as they approach the sell date', function() {
       expect(items[0].quality).to.equal(9);
     });
-    it('should degrade twice as fast once the sell by date has passed', function() {
+    it('should degrade quality twice as fast once the sell by date has passed', function() {
       expect(items[1].quality).to.equal(3);
     });
-    it('should be zero or higher', function() {
+    it('should have minimum quality zero', function() {
       expect(items[2].quality).to.equal(0);
     });
-    it('should be 50 or lower', function() {
+    it('should have maximum quality 50', function() {
       expect(items[3].quality).to.equal(49);
       expect(items[4].quality).to.equal(48);
     });
   });
-  describe('Aged Brie quality', function () {
+  describe('Aged Brie', function () {
     const gildedRose = new GildedRose([
       new Item('Aged Brie', 5, 10),
       new Item('Aged Brie', 0, 10),
     ]);
     const items = gildedRose.updateQuality();
-    it('should increase as they approach the sell date', function() {
+    it('should increase quality as it approach the sell date', function() {
       expect(items[0].quality).to.equal(11);
     });
-    it('should increase twice as fast once the sell by date has passed', function() {
+    it('should increase quality twice as fast once the sell by date has passed', function() {
       expect(items[1].quality).to.equal(12);
     });
   });
@@ -45,16 +45,18 @@ describe('Gilded Rose', function () {
       new Item('Sulfuras, Hand of Ragnaros', -10, 10),
     ]);
     const items = gildedRose.updateQuality();
-    it('should not degrade sellIn value', function() {
+    it('should not degrade sell date', function() {
       expect(items[0].sellIn).to.equal(5);
       expect(items[1].sellIn).to.equal(0);
+      expect(items[2].sellIn).to.equal(-10);
     });
-    it('should always have quality value 80', function() {
+    it('should have quality 80', function() {
       expect(items[0].quality).to.equal(80);
       expect(items[1].quality).to.equal(80);
+      expect(items[2].quality).to.equal(80);
     });
   });
-  describe('Backstage passes quality', function () {
+  describe('Backstage passes', function () {
     const gildedRose = new GildedRose([
       new Item('Backstage passes to a TAFKAL80ETC concert', 15, 10),
       new Item('Backstage passes to a TAFKAL80ETC concert', 10, 10),
@@ -64,28 +66,28 @@ describe('Gilded Rose', function () {
       new Item('Backstage passes to a TAFKAL80ETC concert', 0, 10),
     ]);
     const items = gildedRose.updateQuality();
-    it('should increase by 1 if sel by date is more than 10', function() {
+    it('should increase quality by 1 if sell by date is more than 10', function() {
       expect(items[0].quality).to.equal(11);
     });
-    it('should increase by 2 once the sell by date is 10 or less', function() {
+    it('should increase quality by 2 once the sell by date is 10 or less', function() {
       expect(items[1].quality).to.equal(12);
       expect(items[2].quality).to.equal(12);
     });
-    it('should increase by 3 once the sell by date is 5 or less', function() {
+    it('should increase quality by 3 once the sell by date is 5 or less', function() {
       expect(items[3].quality).to.equal(13);
       expect(items[4].quality).to.equal(13);
     });
-    it('should be zero once the sell by date has passed', function() {
+    it('should have quality zero once the sell by date has passed', function() {
       expect(items[5].quality).to.equal(0);
     });
   });
-  describe('Conjured quality', function () {
+  describe('Conjured', function () {
     const gildedRose = new GildedRose([
       new Item('Conjured', 10, 10),
       new Item('Conjured', 0, 10),
     ]);
     const items = gildedRose.updateQuality();
-    it('should degrade twice as fast as regular items', function () {
+    it('should degrade quality twice as fast as regular items', function () {
       expect(items[0].quality).to.equal(8);
       expect(items[1].quality).to.equal(6);
     });
