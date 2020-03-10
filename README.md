@@ -1,10 +1,3 @@
-# How to use
-
-1. Clone the code
-2. install dependencies by running `npm -i` from in root directory 
-3. run `npm run test` to see the test results in console
-4. open in browser `index.html` from `coverage` folder to see the html representation of the tests 
-
 # Gilded Rose Refactoring Kata
 
 This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
@@ -36,3 +29,11 @@ It's basically the same idea as "assertEquals(expected, actual)" in a unit test,
 Typically a piece of legacy code may not produce suitable textual output from the start, so you may need to modify it before you can write your first text-based approval test. That could involve inserting log statements into the code, or just writing a "main" method that executes the code and prints out what the result is afterwards. It's this latter approach we are using here to test GildedRose.
 
 The Text-Based tests in this repository are designed to be used with the tool "TextTest" (http://texttest.org). This tool helps you to organize and run text-based tests. There is more information in the README file in the "texttests" subdirectory.
+
+# How to use my solution
+
+1. Clone the code
+2. install dependencies by running `npm -i` from in root directory 
+3. run `npm run test` to see the test results in console
+4. open in browser `index.html` from `coverage` folder to see the html representation of the tests 
+
